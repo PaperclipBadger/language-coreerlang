@@ -12,41 +12,20 @@ patterns: [
         name: 'constant.numeric.float.coreerlang'
     }
     {
-        begin: '(\')'
+        begin: '(\')(?=([^\'\\\\]|\\\\\')*\'/[0-9]+\\b)'
         beginCaptures:
             1:
                 name: 'punctuation.definition.symbol.begin.coreerlang'
-        end: '((\')|$)'
+        end: '(\')(/[0-9]+)\\b'
         endCaptures:
-            2:
-                name: 'puncutation.definition.symbol.end.coreerlang'
-        name: 'constant.other.symbol.coreerlang'
-        patterns: [
-            {
-                match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
-                captures:
-                    1:
-                        name: 'punctuation.definition.escape.coreerlang'
-                name: 'constant.character.escape.coreerlang'
-            }
-
-        ]
-    }
-    {
-        begin: '(\')'
-        beginCaptures:
             1:
-                name: 'punctuation.definition.symbol.begin.coreerlang'
-        end: '((\')(/[0-9]+)\\b|$)'
-        endCaptures:
-            2:
                 name: 'puncutation.definition.symbol.end.coreerlang'
-            3:
+            2:
                 name: 'entity.name.function.arity.coreerlang'
         name: 'entity.name.function.coreerlang'
         patterns: [
             {
-                match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
+                match: '(\\\\)([0-7]{1,3}|[bdefnrstv"\'\\\\])'
                 captures:
                     1:
                         name: 'punctuation.definition.escape.coreerlang'
@@ -56,7 +35,28 @@ patterns: [
         ]
     }
     {
-        match: '(\\$)([^\'\\\\ ]|((\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])))'
+        begin: '(\')'
+        beginCaptures:
+            1:
+                name: 'punctuation.definition.symbol.begin.coreerlang'
+        end: '(\')'
+        endCaptures:
+            1:
+                name: 'puncutation.definition.symbol.end.coreerlang'
+        name: 'constant.other.symbol.coreerlang'
+        patterns: [
+            {
+                match: '(\\\\)([0-7]{1,3}|[bdefnrstv"\'\\\\])'
+                captures:
+                    1:
+                        name: 'punctuation.definition.escape.coreerlang'
+                name: 'constant.character.escape.coreerlang'
+            }
+
+        ]
+    }
+    {
+        match: '(\\$)([^\\r\\n\'\\\\ ]|((\\\\)([0-7]{1,3}|[bdefnrstv"\'\\\\])))'
         captures:
             1:
                 name: 'punctuation.definition.character.coreerlang'
@@ -71,7 +71,7 @@ patterns: [
         beginCaptures:
             1:
                 name: 'punctuation.definition.string.begin.coreerlang'
-        end: '("|$)'
+        end: '(")'
         endCaptures:
             1:
                 name: 'puncutation.definition.string.end.coreerlang'
