@@ -16,13 +16,34 @@ patterns: [
         beginCaptures:
             1:
                 name: 'punctuation.definition.symbol.begin.coreerlang'
-        end: '((\')(/[0-9]+\\b)?|$)'
+        end: '((\')|$)'
+        endCaptures:
+            2:
+                name: 'puncutation.definition.symbol.end.coreerlang'
+        name: 'constant.other.symbol.coreerlang'
+        patterns: [
+            {
+                match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
+                captures:
+                    1:
+                        name: 'punctuation.definition.escape.coreerlang'
+                name: 'constant.character.escape.coreerlang'
+            }
+
+        ]
+    }
+    {
+        begin: '(\')'
+        beginCaptures:
+            1:
+                name: 'punctuation.definition.symbol.begin.coreerlang'
+        end: '((\')(/[0-9]+)\\b|$)'
         endCaptures:
             2:
                 name: 'puncutation.definition.symbol.end.coreerlang'
             3:
-                name: 'constant.other.symbol.arity.coreerlang'
-        name: 'constant.other.symbol.coreerlang'
+                name: 'entity.name.function.arity.coreerlang'
+        name: 'entity.name.function.coreerlang'
         patterns: [
             {
                 match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
