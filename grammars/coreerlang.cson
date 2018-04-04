@@ -29,7 +29,7 @@ patterns: [
                 captures:
                     1:
                         name: 'punctuation.definition.escape.coreerlang'
-                name: 'constant.other.symbol.escape.coreerlang'
+                name: 'constant.character.escape.coreerlang'
             }
 
         ]
@@ -61,7 +61,7 @@ patterns: [
                 captures:
                     1:
                         name: 'punctuation.definition.escape.coreerlang'
-                name: 'constant.string.escape.coreerlang'
+                name: 'constant.character.escape.coreerlang'
             }
 
         ]
