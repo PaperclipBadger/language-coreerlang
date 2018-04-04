@@ -16,10 +16,12 @@ patterns: [
         beginCaptures:
             1:
                 name: 'punctuation.definition.symbol.begin.coreerlang'
-        end: '(\'|$)'
+        end: '((\')(/[0-9]+)|$)'
         endCaptures:
-            1:
+            2:
                 name: 'puncutation.definition.symbol.end.coreerlang'
+            3:
+                name: 'constant.other.symbol.arity.coreerlang'
         name: 'constant.other.symbol.coreerlang'
         patterns: [
             {
@@ -69,7 +71,15 @@ patterns: [
         name: 'variable.other.coreerlang'
     }
     {
-        match: '\\b(module|attributes|end|let|in|case|of|end|->|fun|letrec|apply|call|primop|try|catch|receive|after|do|catch)\\b'
+        match: '\\b(module|attributes|end|let|in|case|of|end|when|fun|letrec|apply|call|primop|try|catch|receive|after|do|catch)\\b'
         name: 'keyword.control.coreerlang'
+    }
+    {
+        match: '(%).*$'
+        captures:
+            1:
+                'punctuation.definition.comment.coreerlang'
+        name: 'comment.line.percentage.coreerlang'
+
     }
 ]
