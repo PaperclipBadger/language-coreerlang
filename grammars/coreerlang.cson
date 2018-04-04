@@ -35,7 +35,7 @@ patterns: [
         ]
     }
     {
-        match: '\\b(\\$)([^\'\\\\ ]|((\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])))\\b'
+        match: '(\\$)([^\'\\\\ ]|((\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])))'
         captures:
             1:
                 name: 'punctuation.definition.character.coreerlang'
@@ -46,11 +46,11 @@ patterns: [
          name: 'constant.character.coreerlang'
     }
     {
-        begin: '\\b(")'
+        begin: '(")'
         beginCaptures:
             1:
                 name: 'punctuation.definition.string.begin.coreerlang'
-        end: '("\\b|$)'
+        end: '("|$)'
         endCaptures:
             1:
                 name: 'puncutation.definition.string.end.coreerlang'
@@ -67,7 +67,7 @@ patterns: [
         ]
     }
     {
-        match: '\\b([A-Z]|_[A-Za-z0-9@_])[A-Za-z0-9@_]*\\b'
+        match: '\\b([A-Z]|_[A-Za-z0-9@_])[A-Za-z0-9@_]*'
         name: 'variable.other.coreerlang'
     }
     {
