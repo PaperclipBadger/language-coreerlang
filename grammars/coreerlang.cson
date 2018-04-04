@@ -12,7 +12,7 @@ patterns: [
         name: 'constant.numeric.float.coreerlang'
     }
     {
-        begin: '\\b(\')'
+        begin: '(\')'
         beginCaptures:
             1:
                 name: 'punctuation.definition.symbol.begin.coreerlang'
