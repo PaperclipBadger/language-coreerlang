@@ -1,0 +1,75 @@
+scopeName: 'source.coreerlang'
+name: 'CoreErlang'
+fileTypes: ['core']
+
+patterns: [
+    {
+        match: '[+\\-]?[0-9]+'
+        name: 'constant.numeric.integer.coreerlang'
+    }
+    {
+        match: '[+\\-]?[0-9]+\\.[0-9]+([Ee][+\\-]?[0-9]+)?'
+        name: 'constant.numeric.float.coreerlang'
+    }
+    {
+        begin: '(\')'
+        beginCaptures:
+            1:
+                name: 'punctuation.definition.symbol.begin.coreerlang'
+        end: '(\'|$)'
+        endCaptures:
+            1:
+                name: 'puncutation.definition.symbol.end.coreerlang'
+        name: 'constant.other.symbol.coreerlang'
+        patterns: [
+            {
+                match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
+                captures:
+                    1:
+                        name: 'punctuation.definition.escape.coreerlang'
+                name: 'constant.other.symbol.escape.coreerlang'
+            }
+
+        ]
+    }
+    {
+        match: '(\\$)([^\'\\\\ ]|((\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])))'
+        captures:
+            1:
+                name: 'punctuation.definition.character.coreerlang'
+            3:
+                name: 'constant.character.escape.coreerlang'
+            4:
+                name: 'punctuation.definition.escape.coreerlang'
+         name: 'constant.character.coreerlang'
+    }
+    {
+        begin: '(")'
+        beginCaptures:
+            1:
+                name: 'punctuation.definition.string.begin.coreerlang'
+        end: '("|$)'
+        endCaptures:
+            1:
+                name: 'puncutation.definition.string.end.coreerlang'
+        name: 'constant.string.coreerlang'
+        patterns: [
+            {
+                match: '(\\\\)([0-7]{1-3}|[bdefnrstv"\'\\\\])'
+                captures:
+                    1:
+                        name: 'punctuation.definition.escape.coreerlang'
+                name: 'constant.string.escape.coreerlang'
+            }
+
+        ]
+    }
+    {
+        match: '([A-Z]|_[A-Za-z0-9@_])[A-Za-z0-9@_]*'
+        name: 'variable.other.coreerlang'
+    }
+    {
+        match: '\\b(module|attributes|end|let|in|case|of|end|->|fun|letrec|apply|call|primop|try|catch|receive|after|do|catch)\\b'
+        name: 'keyword.control.coreerlang'
+    }
+]
