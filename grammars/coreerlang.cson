@@ -16,7 +16,7 @@ patterns: [
         beginCaptures:
             1:
                 name: 'punctuation.definition.symbol.begin.coreerlang'
-        end: '((\')(/[0-9]+)?\\b|$)'
+        end: '((\')(/[0-9]+\\b)?|$)'
         endCaptures:
             2:
                 name: 'puncutation.definition.symbol.end.coreerlang'
